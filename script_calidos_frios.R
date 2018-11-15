@@ -137,11 +137,11 @@ my_theme <- theme(plot.title = element_text(hjust = 0.5,size = 12), axis.title.x
 #Periodo +1 dias
 p <- ggplot(data=datos,aes(x=datos$meses,y=cantidad)) + geom_bar(stat = "identity",fill=paleta) + theme_light() +
      xlab("Meses") + ylab("Cantidad") + scale_x_continuous(breaks = meses) + 
-     ggtitle("Duracion mayor a 1 dia") + my_theme +ylim(0,max(cantidad))
+     ggtitle("Duración mayor a 1 dia") + my_theme +ylim(0,max(cantidad))
 #Periodo +3 dias
 g <- ggplot(data=datos,aes(x=datos$meses,y=cantidad_3dias)) + geom_bar(stat = "identity",fill=paleta) + theme_light() +
      xlab("Meses") + ylab("Cantidad") + scale_x_continuous(breaks = meses) + 
-     ggtitle("Duracion mayor a 3 dias")  + my_theme +ylim(0,max(cantidad))
+     ggtitle("Duración mayor a 3 dias")  + my_theme +ylim(0,max(cantidad))
 ggsave(filename=paste(OUTPUTS,"barras_periodos",periodo,".jpeg"),
        plot = grid.arrange(p, g, ncol=2, top=paste("FORMOSA AERO: Periodos",periodo ,"por mes 1963-2003")),scale = 2,width=5,height =2.5)
 ###################################################################################################################
@@ -153,7 +153,7 @@ evento <- Formosa_Aero[(which(Formosa_Aero$Fecha==ini)-3):(which(Formosa_Aero$Fe
 
 p <- ggplot(data=evento,aes(x=Fecha)) + geom_col(aes(y=Tx,fill="Tx"),position = "stack") + theme_light() + my_theme
 p <- p + geom_col(aes(y=Tn,fill="Tn")) + xlab("Tiempo") + ylab("Temperatura (°C)") + 
-     ggtitle("FORMOSA AERO: evolucion de la temperatura desde el 27-05-2001 al 18-06-2001") + scale_x_date(breaks=date_breaks("3 days"))
+     ggtitle("FORMOSA AERO: evolución de la temperatura desde el 27-05-2001 al 18-06-2001") + scale_x_date(breaks=date_breaks("3 days"))
 p <- p + geom_point(aes(y=Tmean,colour="Tmean"),size=2.5) + geom_line(aes(y=Tmsd,colour="Umbral"),size=1,linetype="twodash") 
 p <- p + scale_fill_manual(values=c("lightskyblue","indianred1"),name=NULL) + scale_colour_manual(values=c("purple","black"),name=NULL)
 ggsave(filename=paste(OUTPUTS,"Evento de mayor longitud.jpeg"),plot=p,scale=2,height=2.5,width=5)
