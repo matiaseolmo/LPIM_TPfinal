@@ -166,5 +166,5 @@ my_theme <- theme(plot.title = element_text(hjust = 0.5,size = 12), axis.title.x
 p <- ggplot(data=medias,aes(x=meses)) +  geom_ribbon(aes(ymin=Tmean - sd,ymax=Tmean + sd,fill="Desvio estandar"),stat="identity",alpha=0.6) + theme_light()
 p <- p + geom_line(aes(y=Tmean,colour="Valor medio"),size=1) + scale_x_continuous(breaks = meses) + xlab("Meses") + ylab("Temperatura (°C)") + my_theme
 p <- p + geom_point(aes(y=Tmean),colour="red",size=2.5) + ggtitle("FORMOSA AERO: Onda anual de temperatura (1963-2003)") 
-p <- p + scale_colour_manual(values=c("red"),name=NULL) + scale_fill_manual(values="grey87",name=NULL)
+p <- p + scale_colour_manual(values=c("red"),name=NULL) + scale_fill_manual(values="grey77",name=NULL)
 ggsave(filename=paste(OUTPUTS,"Onda anual.jpeg"),plot=p,scale=2,height=2.5,width=5)
