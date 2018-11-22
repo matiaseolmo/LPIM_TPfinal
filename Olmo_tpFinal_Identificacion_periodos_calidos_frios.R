@@ -24,8 +24,7 @@ Formosa_Aero <- read.table("Formosaaero.txt", sep=",",dec=".",col.names=columns,
 #que requiere una columna con fechas y controla que no haya saltos en el intervalo de dias (en este caso)
 corregidos <- pad(Formosa_Aero) #la funcion pad completa en caso de que existan saltos temporales
 
-#Genera un objeto del tipo logico que corrobora que ambos objetos tengan la misma dimension,
-#si no hay saltos en los datos
+#Corrobora que ambos objetos tengan la misma dimension, si no hay saltos en los datos
 if(dim(corregidos)[1] == dim(Formosa_Aero)[1]) {
   rm(corregidos,columns,class_columns)} else {
     Formosa_Aero <- corregidos ; rm(corregidos,columns,class_columns)}
@@ -39,7 +38,7 @@ Formosa_Aero <- Formosa_Aero[-dim(Formosa_Aero)[1],]
 porc_na <- sum(is.na(Formosa_Aero))/dim(Formosa_Aero)[1]*100
 print(paste("La base de datos posee",round(porc_na,digits=1),"% de datos faltantes"),quote=F)
 
-#Es posible completar los datos faltantes con el valor medio de los dias contiguos
+#Es posible completar los datos faltantes con el valor medio de los dias contiguos a partir de la siguiente funcion:
 completar_NA<-function(datos,n_columna){
   #Para el primer dato
   if (is.na(datos[1,n_columna])){datos[1,n_columna]<-datos[2,n_columna]} 
@@ -49,7 +48,7 @@ completar_NA<-function(datos,n_columna){
   for (i in 2:(length(datos[,1])-1)){
     if (is.na(datos[i,n_columna])){datos[i,n_columna]<-(datos[(i+1),n_columna]+datos[(i-1),n_columna])/2 }
   }
-  #La funcion devuelve los datos llenados
+  #La funcion devuelve los datos ya completos
   datos[,n_columna]
 }
 
