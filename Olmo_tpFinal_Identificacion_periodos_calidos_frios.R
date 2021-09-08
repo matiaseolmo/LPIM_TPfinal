@@ -3,9 +3,11 @@
 ############################################################################################
 rm(list=ls()) ; cat("\014") ; graphics.off()
 
+#Hello
+
 WORKDIR_UBUNTU <- "/media/matias/Mati/Otros/2C_2018/LPIM/Trabajo_Final";WORKDIR_WINDOWS <- "E:/Otros/2C_2018/LPIM/Trabajo_Final"
 setwd(WORKDIR_WINDOWS) #setea el directorio de trabajo
-OUTPUTS <- "OUTPUTS/" #carpeta donde se iran guardando los resultados
+
 
 #Carga las librerias necesarias
 library(padr)
